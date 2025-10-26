@@ -94,8 +94,8 @@ img {
 }
 
 .qr__code {
-    width: 125px;
-    height: 125px;
+    width: 40px;
+    height: 40px;
     padding: 4px;
     border: 1px solid #828288;
     border-radius: 6px;
@@ -266,7 +266,7 @@ img {
 }
 
 .detail {
-    height: 277px;
+    height: 235px;
     padding: 8px;
     border: 1px solid #828288;
     border-radius: 6px;
@@ -274,7 +274,7 @@ img {
 .detail__title {
     margin-bottom: 4px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
     color: #18181C;
 }
@@ -351,7 +351,7 @@ img {
 }
 
 .info {
-    height: 277px;
+    height: 235px;
     padding: 8px;
     border: 1px solid #828288;
     border-radius: 6px;
@@ -377,8 +377,8 @@ img {
 }
 
 .user__title {
-    margin-bottom: 12px;
-    font-weight: 700;
+    margin-bottom: 6px;
+    font-weight: 600;
     font-size: 14px;
     color: #18181C;
 }
@@ -429,12 +429,6 @@ img {
 .comment:not(:last-child) {
     margin-bottom: 20px;
 }
-.comment__image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
 .comment__avatar {
     display: grid;
     place-items: center;
@@ -443,6 +437,14 @@ img {
     height: 40px;
     background-color: #f3f3f8;
     border-radius: 50%;
+    overflow: hidden;
+}
+.comment__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
 }
 .comment__content {
     flex-grow: 1;

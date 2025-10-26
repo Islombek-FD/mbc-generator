@@ -7,11 +7,11 @@
     <body>
         <div class="page">
             <!-- ID + Process + Status -->
-            <div class="d-flex mb-20" style="justify-content: space-between; align-items: center;">
-                <img src="{{getLogoBase64}}" alt="Logo" width="139px" height="125px" />
+            <div class="d-flex mb-10" style="justify-content: space-between; align-items: center;">
+                <img src="{{getLogoBase64}}" alt="Logo" height="40px" />
 
                 <h2 style="text-align: center">
-                    ОТЧЁТ ОТДЕЛА ТЕХНИЧЕСКОГО НАДЗОРА <br> ПО ОБЪЕКТУ {{projectName}}
+                    ОТЧЁТ ОТДЕЛА ТЕХНИЧЕСКОГО НАДЗОРА ПО ОБЪЕКТУ {{projectName}}
                 </h2>
 
                 <div class="qr__code">
@@ -177,7 +177,7 @@
             </div>
 
             <!-- Detail + Info -->
-            <div class="d-flex mb-20">
+            <div class="d-flex mb-10">
                 <div class="w-422" style="flex-shrink: 0">
                     <div class="info">
                         <div class="info__item">
@@ -194,7 +194,6 @@
                 <div style="width: 100%;">
                     <div class="detail">
                         <h3 class="detail__title">Дополнительные данные</h3>
-                        <p class="detail__description">Дополнительные данные по замечанию</p>
 
                         <div class="detail__item">
                             <strong class="detail__item-key">Тип документа</strong>
@@ -249,7 +248,6 @@
                 <div style="width: 100%;">
                     <div class="detail">
                         <h3 class="detail__title">Ответственные</h3>
-                        <p class="detail__description">Ответственные лица по строительству</p>
 
                         <div class="user__item">
                             <div>
@@ -354,6 +352,58 @@
                 </div>
             </div>
 
+            <!-- Users -->
+            <div class="d-flex">
+                <div class="w-422" style="padding-right: 60px;">
+                    <h3 class="user__title">Выдал замечание</h3>
+                    <div class="user__item">
+                        <h4 class="user__item-value">Отчет составил ОТН</h4>
+                        <h4 class="user__item-value">{{technical.fullName}}</h4>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <h3 class="user__title">Принял замечание</h3>
+                    <div class="d-flex" style="column-gap: 50px;">
+                        <div style="width: 100%;">
+                            <div class="user__item">
+                                <div>
+                                    <h4 class="user__item-value">{{contractor.name}}</h4>
+                                    <p class="user__item-key">Генподрядчик</p>
+                                </div>
+                                <div>
+                                    <h4 class="user__item-value">{{contractor.user.fullName}}</h4>
+                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
+                                </div>
+                            </div>
+                            <div class="user__item">
+                                <div>
+                                    <h4 class="user__item-value">{{subContractor.name}}</h4>
+                                    <p class="user__item-key">Субподрядчик</p>
+                                </div>
+                                <div>
+                                    <h4 class="user__item-value">{{subContractor.user.fullName}}</h4>
+                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <div class="user__item">
+                                <h4 class="user__item-value">РП объекта</h4>
+                                <h4 class="user__item-value">{{manager.fullName}}</h4>
+                            </div>
+                            <div class="user__item">
+                                <h4 class="user__item-value">ЗРП объекта</h4>
+                                <h4 class="user__item-value">{{managerAssistant.fullName}}</h4>
+                            </div>
+                            <div class="user__item">
+                                <h4 class="user__item-value">Прораб объекта</h4>
+                                <h4 class="user__item-value">{{foreman.fullName}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Comments -->
             {{#if comments.length}}
                 <div class="comments">
@@ -406,7 +456,6 @@
             {{#if histories.length}}
                 <div class="histories">
                     <h3 class="detail__title">История изменений</h3>
-                    <p class="detail__description">История изменений по замечанию</p>
 
                     {{#each histories}}
                         <div class="history">
@@ -419,58 +468,6 @@
                     {{/each}}
                 </div>
             {{/if}}
-
-            <!-- Users -->
-            <div class="d-flex">
-                <div class="w-422" style="padding-right: 60px;">
-                    <h3 class="user__title">Выдал замечание</h3>
-                    <div class="user__item">
-                        <h4 class="user__item-value">Отчет составил ОТН</h4>
-                        <h4 class="user__item-value">{{technical.fullName}}</h4>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <h3 class="user__title">Принял замечание</h3>
-                    <div class="d-flex" style="column-gap: 50px;">
-                        <div style="width: 100%;">
-                            <div class="user__item">
-                                <div>
-                                    <h4 class="user__item-value">{{contractor.name}}</h4>
-                                    <p class="user__item-key">Генподрядчик</p>
-                                </div>
-                                <div>
-                                    <h4 class="user__item-value">{{contractor.user.fullName}}</h4>
-                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
-                                </div>
-                            </div>
-                            <div class="user__item">
-                                <div>
-                                    <h4 class="user__item-value">{{subContractor.name}}</h4>
-                                    <p class="user__item-key">Субподрядчик</p>
-                                </div>
-                                <div>
-                                    <h4 class="user__item-value">{{subContractor.user.fullName}}</h4>
-                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="width: 100%;">
-                            <div class="user__item">
-                                <h4 class="user__item-value">РП объекта</h4>
-                                <h4 class="user__item-value">{{manager.fullName}}</h4>
-                            </div>
-                            <div class="user__item">
-                                <h4 class="user__item-value">ЗРП объекта</h4>
-                                <h4 class="user__item-value">{{managerAssistant.fullName}}</h4>
-                            </div>
-                            <div class="user__item">
-                                <h4 class="user__item-value">Прораб объекта</h4>
-                                <h4 class="user__item-value">{{foreman.fullName}}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </body>
 </html>
