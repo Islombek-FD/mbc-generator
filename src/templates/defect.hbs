@@ -355,66 +355,70 @@
             </div>
 
             <!-- Comments -->
-            <div class="comments">
-                {{#each comments}}
-                    <div class="comment {{#if (eq this.createdById @root.userId)}}comment--reverse{{/if}}">
-                        <div class="comment__avatar">
-                            {{#if this.createdByPhotoUuid}}
-                                <img class="comment__image" src="{{@root.downloadUrl}}{{this.createdByPhotoUuid}}" alt="{{this.createdByName}}" />
-                            {{else}}
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g>
-                                        <path
-                                            d="M15.467 16.2907C14.6391 14.0765 12.5043 12.5 10.0013 12.5C7.49828 12.5 5.36347 14.0765 4.53561 16.2907M15.467 16.2907C17.2239 14.7629 18.3346 12.5112 18.3346 10C18.3346 5.39765 14.6037 1.66669 10.0013 1.66669C5.39893 1.66669 1.66797 5.39765 1.66797 10C1.66797 12.5112 2.77867 14.7629 4.53561 16.2907M15.467 16.2907C14.0039 17.5631 12.0925 18.3334 10.0013 18.3334C7.91007 18.3334 5.99875 17.5631 4.53561 16.2907"
-                                            stroke="#5957D7"
-                                            stroke-width="1.5"
-                                            stroke-linejoin="round"
-                                        />
-                                        <circle
-                                            cx="2.5"
-                                            cy="2.5"
-                                            r="2.5"
-                                            transform="matrix(1 0 0 -1 7.5 10)"
-                                            stroke="#5957D7"
-                                            stroke-width="1.5"
-                                            stroke-linejoin="round"
-                                        />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_2007_28181">
-                                            <rect width="20" height="20" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            {{/if}}
-                        </div>
-
-                        <div class="comment__content">
-                            <div class="comment__header">
-                                <div class="comment__name">{{this.createdByName}}</div>
-                                <div class="comment__date">{{this.createdAt}}</div>
+            {{#if comments.length}}
+                <div class="comments">
+                    {{#each comments}}
+                        <div class="comment {{#if (eq this.createdById @root.userId)}}comment--reverse{{/if}}">
+                            <div class="comment__avatar">
+                                {{#if this.createdByPhotoUuid}}
+                                    <img class="comment__image" src="{{@root.downloadUrl}}{{this.createdByPhotoUuid}}" alt="{{this.createdByName}}" />
+                                {{else}}
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g>
+                                            <path
+                                                d="M15.467 16.2907C14.6391 14.0765 12.5043 12.5 10.0013 12.5C7.49828 12.5 5.36347 14.0765 4.53561 16.2907M15.467 16.2907C17.2239 14.7629 18.3346 12.5112 18.3346 10C18.3346 5.39765 14.6037 1.66669 10.0013 1.66669C5.39893 1.66669 1.66797 5.39765 1.66797 10C1.66797 12.5112 2.77867 14.7629 4.53561 16.2907M15.467 16.2907C14.0039 17.5631 12.0925 18.3334 10.0013 18.3334C7.91007 18.3334 5.99875 17.5631 4.53561 16.2907"
+                                                stroke="#5957D7"
+                                                stroke-width="1.5"
+                                                stroke-linejoin="round"
+                                            />
+                                            <circle
+                                                cx="2.5"
+                                                cy="2.5"
+                                                r="2.5"
+                                                transform="matrix(1 0 0 -1 7.5 10)"
+                                                stroke="#5957D7"
+                                                stroke-width="1.5"
+                                                stroke-linejoin="round"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2007_28181">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                {{/if}}
                             </div>
-                            <div class="comment__message">{{this.message}}</div>
+
+                            <div class="comment__content">
+                                <div class="comment__header">
+                                    <div class="comment__name">{{this.createdByName}}</div>
+                                    <div class="comment__date">{{this.createdAt}}</div>
+                                </div>
+                                <div class="comment__message">{{this.message}}</div>
+                            </div>
                         </div>
-                    </div>
-                {{/each}}
-            </div>
+                    {{/each}}
+                </div>
+            {{/if}}
 
             <!-- Histories -->
-            <div class="histories mb-20">
-                <h3 class="detail__title">История изменений</h3>
-                <p class="detail__description">История изменений по замечанию</p>
+            {{#if histories.length}}
+                <div class="histories">
+                    <h3 class="detail__title">История изменений</h3>
+                    <p class="detail__description">История изменений по замечанию</p>
 
-                {{#each histories}}
-                    <div class="history">
-                        <div class="history__key">{{this.action}}</div>
-                        <div class="history__right">
-                            <div class="history__value">{{this.createdByName}}</div>
-                            <div class="history__value">{{this.createdAt}}</div>
+                    {{#each histories}}
+                        <div class="history">
+                            <div class="history__key">{{this.action}}</div>
+                            <div class="history__right">
+                                <div class="history__value">{{this.createdByName}}</div>
+                                <div class="history__value">{{this.createdAt}}</div>
+                            </div>
                         </div>
-                    </div>
-                {{/each}}
-            </div>
+                    {{/each}}
+                </div>
+            {{/if}}
 
             <!-- Users -->
             <div class="d-flex">

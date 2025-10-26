@@ -89,11 +89,9 @@ async function registerPartials() {
       if (await fs.pathExists(cssPath)) {
          const css = await fs.readFile(cssPath, 'utf-8');
          content = `<style>${css}</style>` + '\n' + content;
-         console.log(`Added CSS: ${name}.css`);
       }
 
       Handlebars.registerPartial(name, content);
-      console.log(`Partial loaded: ${name}`);
    }
 }
 
