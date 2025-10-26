@@ -224,7 +224,6 @@ img {
     height: 245px;
     background-color: #F3F3FE;
     border-radius: 6px;
-    overflow: hidden;
 }
 .image img {
     width: 100%;
@@ -260,7 +259,6 @@ img {
     text-align: center;
     background-color: #F3F3FE;
     border-radius: 6px;
-    overflow: hidden;
 }
 .plan__image img {
     width: auto;
@@ -368,8 +366,14 @@ img {
     color: #18181C;
 }
 .info__item-description {
+    display: -webkit-box;
     font-size: 12px;
     color: #60607C;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+    -webkit-box-orient: vertical;
 }
 
 .user__title {
@@ -404,7 +408,6 @@ img {
     line-height: 1;
     color: #60607C;
 }
-
 
 /* Comment styles */
 .comments {

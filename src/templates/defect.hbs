@@ -157,9 +157,20 @@
                     <div class="plan">
                         <h3 class="plan__title">Замечание на чертеже</h3>
                         <div class="plan__image">
-                            {{#if planImageUrl}}
-                                <img src="{{planImageUrl}}" alt="План"/>
-                            {{/if}}
+                            <div style="position: relative; display: inline-block; height: 100%;">
+                                {{#if planImageUrl}}
+                                    <img src="{{planImageUrl}}" alt="План"/>
+
+                                    {{> defect-marker
+                                            id=id
+                                            x=x
+                                            y=y
+                                            height=height
+                                            defectStatus=defectStatus
+                                            direction=direction
+                                    }}
+                                {{/if}}
+                            </div>
                         </div>
                     </div>
                 </div>

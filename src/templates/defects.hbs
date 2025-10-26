@@ -123,8 +123,9 @@
                     </div>
                 </div>
 
-                <!-- Images + Plan -->
+                <!-- Images + Detail + Info -->
                 <div class="d-flex mb-10">
+                    <!-- Images -->
                     <div class="w-422">
                         <div class="images">
                             <div class="image">
@@ -141,21 +142,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full">
-                        <div class="plan">
-                            <h3 class="plan__title">Замечание на чертеже</h3>
-                            <div class="plan__image">
-                                {{#if this.planImageUrl}}
-                                    <img src="{{this.planImageUrl}}" alt="План"/>
-                                {{/if}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Detail + Info -->
-                <div class="d-flex mb-20">
-                    <div class="w-422">
+                    <!-- Detail + Info -->
+                    <div class="w-full">
                         <div class="detail">
                             <h3 class="detail__title">Дополнительные данные</h3>
                             <p class="detail__description">Дополнительные данные по замечанию</p>
@@ -208,8 +197,7 @@
                                 {{/each}}
                             </div>
                         </div>
-                    </div>
-                    <div class="w-full">
+
                         <div class="info">
                             <div class="info__item">
                                 <h4 class="info__item-title">Описание</h4>
