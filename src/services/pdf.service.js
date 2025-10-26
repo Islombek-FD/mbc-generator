@@ -11,7 +11,9 @@ export async function generatePdfFromHtml(html, template) {
   const browser = await createBrowser();
   const page = await browser.newPage();
 
-  await page.setContent(html, { waitUntil: "networkidle0" });
+  await page.setContent(html, {
+    waitUntil: "networkidle0"
+  });
 
   const cssPath = path.join(__dirname, '..', 'public', 'css', `${template}.css`);
   if (await fs.pathExists(cssPath)) {

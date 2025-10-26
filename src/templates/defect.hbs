@@ -7,6 +7,19 @@
     <body>
         <div class="page">
             <!-- ID + Process + Status -->
+            <div class="d-flex mb-20" style="justify-content: space-between; align-items: center;">
+                <img src="{{getLogoBase64}}" alt="Logo" width="139px" height="125px" />
+
+                <h2 style="text-align: center">
+                    ОТЧЁТ ОТДЕЛА ТЕХНИЧЕСКОГО НАДЗОРА <br> ПО ОБЪЕКТУ {{projectName}}
+                </h2>
+
+                <div class="qr__code">
+                    <img src="{{qrBase64}}" alt="QR Code" width="100%" height="100%" />
+                </div>
+            </div>
+
+            <!-- ID + Process + Status -->
             <div class="d-flex mb-10">
                 <!-- CARD 1: ID + Status -->
                 <div class="w-33">
@@ -154,7 +167,20 @@
 
             <!-- Detail + Info -->
             <div class="d-flex mb-20">
-                <div class="w-422">
+                <div class="w-422" style="flex-shrink: 0">
+                    <div class="info">
+                        <div class="info__item">
+                            <h4 class="info__item-title">Описание</h4>
+                            <p class="info__item-description">{{description}}</p>
+                        </div>
+                        <div class="info__item">
+                            <h4 class="info__item-title">Мероприятия по устранению</h4>
+                            <p class="info__item-description">{{measures}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 100%;">
                     <div class="detail">
                         <h3 class="detail__title">Дополнительные данные</h3>
                         <p class="detail__description">Дополнительные данные по замечанию</p>
@@ -208,18 +234,175 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full">
-                    <div class="info">
-                        <div class="info__item">
-                            <h4 class="info__item-title">Описание</h4>
-                            <p class="info__item-description">{{description}}</p>
+
+                <div style="width: 100%;">
+                    <div class="detail">
+                        <h3 class="detail__title">Ответственные</h3>
+                        <p class="detail__description">Ответственные лица по строительству</p>
+
+                        <div class="user__item">
+                            <div>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.16797 1.29167C7.13243 1.29167 6.29297 2.13114 6.29297 3.16667V4.00001C6.29297 4.34518 6.01315 4.62501 5.66797 4.62501C5.32279 4.62501 5.04297 4.34518 5.04297 4.00001V3.16667C5.04297 1.44078 6.44208 0.0416718 8.16797 0.0416718H9.83464C11.5605 0.0416718 12.9596 1.44078 12.9596 3.16667V4.00001C12.9596 4.34518 12.6798 4.62501 12.3346 4.62501C11.9895 4.62501 11.7096 4.34518 11.7096 4.00001V3.16667C11.7096 2.13114 10.8702 1.29167 9.83464 1.29167H8.16797Z"
+                                        fill="#5957D7"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                    />
+                                    <path
+                                        d="M0.667969 7.33333C0.667969 5.49238 2.16035 4 4.0013 4H14.0013C15.8423 4 17.3346 5.49238 17.3346 7.33333V14C17.3346 15.841 15.8423 17.3333 14.0013 17.3333H4.0013C2.16035 17.3333 0.667969 15.841 0.667969 14V7.33333Z"
+                                        fill="#5957D7"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M4.0013 4H14.0013C15.8423 4 17.3346 5.49238 17.3346 7.33333C17.3346 7.33333 15.4563 9.17145 10.7154 9.44298C10.4516 9.45808 10.235 9.25077 10.1146 9.01559C9.90755 8.61128 9.48674 8.33456 9.0013 8.33456C8.53351 8.33456 8.12574 8.59153 7.91143 8.972C7.78222 9.2014 7.55876 9.39913 7.29652 9.37559C2.54409 8.949 0.667969 7.33333 0.667969 7.33333C0.667969 5.49238 2.16035 4 4.0013 4Z"
+                                        fill="#5957D7"
+                                    />
+                                    <rect
+                                        x="8.375"
+                                        y="9"
+                                        width="1.25"
+                                        height="2.32836"
+                                        rx="0.625"
+                                        fill="#5957D7"
+                                    />
+                                </svg>
+                            </div>
+                            <div style="margin-right: auto">
+                                <h4 class="user__item-value">{{contractor.name}}</h4>
+                                <p class="user__item-key">Генподрядчик</p>
+                            </div>
+                            <div>
+                                <h4 class="user__item-value">{{contractor.user.phone}}</h4>
+                                <p class="user__item-key" style="text-align: right;">Телефон</p>
+                            </div>
                         </div>
-                        <div class="info__item">
-                            <h4 class="info__item-title">Мероприятия по устранению</h4>
-                            <p class="info__item-description">{{measures}}</p>
+
+                        <div class="user__item">
+                            <div>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.16797 1.29167C7.13243 1.29167 6.29297 2.13114 6.29297 3.16667V4.00001C6.29297 4.34518 6.01315 4.62501 5.66797 4.62501C5.32279 4.62501 5.04297 4.34518 5.04297 4.00001V3.16667C5.04297 1.44078 6.44208 0.0416718 8.16797 0.0416718H9.83464C11.5605 0.0416718 12.9596 1.44078 12.9596 3.16667V4.00001C12.9596 4.34518 12.6798 4.62501 12.3346 4.62501C11.9895 4.62501 11.7096 4.34518 11.7096 4.00001V3.16667C11.7096 2.13114 10.8702 1.29167 9.83464 1.29167H8.16797Z"
+                                        fill="#5957D7"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                    />
+                                    <path
+                                        d="M0.667969 7.33333C0.667969 5.49238 2.16035 4 4.0013 4H14.0013C15.8423 4 17.3346 5.49238 17.3346 7.33333V14C17.3346 15.841 15.8423 17.3333 14.0013 17.3333H4.0013C2.16035 17.3333 0.667969 15.841 0.667969 14V7.33333Z"
+                                        fill="#5957D7"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M4.0013 4H14.0013C15.8423 4 17.3346 5.49238 17.3346 7.33333C17.3346 7.33333 15.4563 9.17145 10.7154 9.44298C10.4516 9.45808 10.235 9.25077 10.1146 9.01559C9.90755 8.61128 9.48674 8.33456 9.0013 8.33456C8.53351 8.33456 8.12574 8.59153 7.91143 8.972C7.78222 9.2014 7.55876 9.39913 7.29652 9.37559C2.54409 8.949 0.667969 7.33333 0.667969 7.33333C0.667969 5.49238 2.16035 4 4.0013 4Z"
+                                        fill="#5957D7"
+                                    />
+                                    <rect
+                                        x="8.375"
+                                        y="9"
+                                        width="1.25"
+                                        height="2.32836"
+                                        rx="0.625"
+                                        fill="#5957D7"
+                                    />
+                                </svg>
+                            </div>
+                            <div style="margin-right: auto">
+                                <h4 class="user__item-value">{{subContractor.name}}</h4>
+                                <p class="user__item-key">Субподрядчик</p>
+                            </div>
+                            <div>
+                                <h4 class="user__item-value">{{subContractor.user.phone}}</h4>
+                                <p class="user__item-key" style="text-align: right;">Телефон</p>
+                            </div>
+                        </div>
+
+                        <div class="user__item" style="border-bottom: none;">
+                            <div>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M15.8333 14.1667C15.8333 16.0077 13.2216 17.5 9.99996 17.5C6.7783 17.5 4.16663 16.0077 4.16663 14.1667C4.16663 12.3258 6.7783 10.8334 9.99996 10.8334C13.2216 10.8334 15.8333 12.3258 15.8333 14.1667Z"
+                                        fill="#5957D7"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M13.3333 5.83333C13.3333 7.67428 11.8409 9.16667 9.99996 9.16667C8.15901 9.16667 6.66663 7.67428 6.66663 5.83333C6.66663 3.99238 8.15901 2.5 9.99996 2.5C11.8409 2.5 13.3333 3.99238 13.3333 5.83333Z"
+                                        fill="#5957D7"
+                                    />
+                                </svg>
+                            </div>
+                            <div style="margin-right: auto">
+                                <h4 class="user__item-value">{{foreman.fullName}}</h4>
+                                <p class="user__item-key">Прораб</p>
+                            </div>
+                            <div>
+                                <h4 class="user__item-value">{{foreman.phone}}</h4>
+                                <p class="user__item-key" style="text-align: right;">Телефон</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="comments">
+                {{#each comments}}
+                    <div class="comment {{#if (eq this.createdById @root.userId)}}comment--reverse{{/if}}">
+                        <div class="comment__avatar">
+                            {{#if this.createdByPhotoUuid}}
+                                <img class="comment__image" src="{{@root.downloadUrl}}{{this.createdByPhotoUuid}}" alt="{{this.createdByName}}" />
+                            {{else}}
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path
+                                            d="M15.467 16.2907C14.6391 14.0765 12.5043 12.5 10.0013 12.5C7.49828 12.5 5.36347 14.0765 4.53561 16.2907M15.467 16.2907C17.2239 14.7629 18.3346 12.5112 18.3346 10C18.3346 5.39765 14.6037 1.66669 10.0013 1.66669C5.39893 1.66669 1.66797 5.39765 1.66797 10C1.66797 12.5112 2.77867 14.7629 4.53561 16.2907M15.467 16.2907C14.0039 17.5631 12.0925 18.3334 10.0013 18.3334C7.91007 18.3334 5.99875 17.5631 4.53561 16.2907"
+                                            stroke="#5957D7"
+                                            stroke-width="1.5"
+                                            stroke-linejoin="round"
+                                        />
+                                        <circle
+                                            cx="2.5"
+                                            cy="2.5"
+                                            r="2.5"
+                                            transform="matrix(1 0 0 -1 7.5 10)"
+                                            stroke="#5957D7"
+                                            stroke-width="1.5"
+                                            stroke-linejoin="round"
+                                        />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_2007_28181">
+                                            <rect width="20" height="20" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            {{/if}}
+                        </div>
+
+                        <div class="comment__content">
+                            <div class="comment__header">
+                                <div class="comment__name">{{this.createdByName}}</div>
+                                <div class="comment__date">{{this.createdAt}}</div>
+                            </div>
+                            <div class="comment__message">{{this.message}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            <!-- Histories -->
+            <div class="histories mb-20">
+                <h3 class="detail__title">История изменений</h3>
+                <p class="detail__description">История изменений по замечанию</p>
+
+                {{#each histories}}
+                    <div class="history">
+                        <div class="history__key">{{this.action}}</div>
+                        <div class="history__right">
+                            <div class="history__value">{{this.createdByName}}</div>
+                            <div class="history__value">{{this.createdAt}}</div>
+                        </div>
+                    </div>
+                {{/each}}
             </div>
 
             <!-- Users -->
@@ -242,7 +425,7 @@
                                 </div>
                                 <div>
                                     <h4 class="user__item-value">{{contractor.user.fullName}}</h4>
-                                    <p class="user__item-key">Ф.И.О</p>
+                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
                                 </div>
                             </div>
                             <div class="user__item">
@@ -252,7 +435,7 @@
                                 </div>
                                 <div>
                                     <h4 class="user__item-value">{{subContractor.user.fullName}}</h4>
-                                    <p class="user__item-key">Ф.И.О</p>
+                                    <p class="user__item-key" style="text-align: right;">Ф.И.О</p>
                                 </div>
                             </div>
                         </div>

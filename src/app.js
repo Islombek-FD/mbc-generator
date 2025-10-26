@@ -13,9 +13,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(bodyParser.json({ limit: "1024mb" }));
 
-app.use("/uploads", express.static(config.uploadsDir));
 app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/fonts', express.static(path.join(__dirname, 'public', 'fonts')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 app.use("/api/v1/pdf", pdfRoutes);
 
