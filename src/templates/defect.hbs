@@ -158,8 +158,8 @@
                         <h3 class="plan__title">Замечание на чертеже</h3>
                         <div class="plan__image">
                             <div style="position: relative; display: inline-block; height: 100%;">
-                                {{#if planImageUrl}}
-                                    <img src="{{planImageUrl}}" alt="План"/>
+                                {{#if planImageUuid}}
+                                    <img src="{{downloadUrl}}{{planImageUuid}}" alt="План"/>
 
                                     {{> defect-marker
                                             id=id
@@ -251,6 +251,54 @@
 
                         <div class="user__item">
                             <div>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M15.8333 14.1667C15.8333 16.0077 13.2216 17.5 9.99996 17.5C6.7783 17.5 4.16663 16.0077 4.16663 14.1667C4.16663 12.3258 6.7783 10.8334 9.99996 10.8334C13.2216 10.8334 15.8333 12.3258 15.8333 14.1667Z"
+                                            fill="#5957D7"
+                                            opacity="0.4"
+                                    />
+                                    <path
+                                            d="M13.3333 5.83333C13.3333 7.67428 11.8409 9.16667 9.99996 9.16667C8.15901 9.16667 6.66663 7.67428 6.66663 5.83333C6.66663 3.99238 8.15901 2.5 9.99996 2.5C11.8409 2.5 13.3333 3.99238 13.3333 5.83333Z"
+                                            fill="#5957D7"
+                                    />
+                                </svg>
+                            </div>
+                            <div style="margin-right: auto">
+                                <h4 class="user__item-value">{{technical.fullName}}</h4>
+                                <p class="user__item-key">Технадзор</p>
+                            </div>
+                            <div>
+                                <h4 class="user__item-value">{{technical.phone}}</h4>
+                                <p class="user__item-key" style="text-align: right;">Телефон</p>
+                            </div>
+                        </div>
+
+                        <div class="user__item">
+                            <div>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M15.8333 14.1667C15.8333 16.0077 13.2216 17.5 9.99996 17.5C6.7783 17.5 4.16663 16.0077 4.16663 14.1667C4.16663 12.3258 6.7783 10.8334 9.99996 10.8334C13.2216 10.8334 15.8333 12.3258 15.8333 14.1667Z"
+                                            fill="#5957D7"
+                                            opacity="0.4"
+                                    />
+                                    <path
+                                            d="M13.3333 5.83333C13.3333 7.67428 11.8409 9.16667 9.99996 9.16667C8.15901 9.16667 6.66663 7.67428 6.66663 5.83333C6.66663 3.99238 8.15901 2.5 9.99996 2.5C11.8409 2.5 13.3333 3.99238 13.3333 5.83333Z"
+                                            fill="#5957D7"
+                                    />
+                                </svg>
+                            </div>
+                            <div style="margin-right: auto">
+                                <h4 class="user__item-value">{{foreman.fullName}}</h4>
+                                <p class="user__item-key">Прораб</p>
+                            </div>
+                            <div>
+                                <h4 class="user__item-value">{{foreman.phone}}</h4>
+                                <p class="user__item-key" style="text-align: right;">Телефон</p>
+                            </div>
+                        </div>
+
+                        <div class="user__item">
+                            <div>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M8.16797 1.29167C7.13243 1.29167 6.29297 2.13114 6.29297 3.16667V4.00001C6.29297 4.34518 6.01315 4.62501 5.66797 4.62501C5.32279 4.62501 5.04297 4.34518 5.04297 4.00001V3.16667C5.04297 1.44078 6.44208 0.0416718 8.16797 0.0416718H9.83464C11.5605 0.0416718 12.9596 1.44078 12.9596 3.16667V4.00001C12.9596 4.34518 12.6798 4.62501 12.3346 4.62501C11.9895 4.62501 11.7096 4.34518 11.7096 4.00001V3.16667C11.7096 2.13114 10.8702 1.29167 9.83464 1.29167H8.16797Z"
@@ -287,7 +335,7 @@
                             </div>
                         </div>
 
-                        <div class="user__item">
+                        <div class="user__item" style="border-bottom: none;">
                             <div>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -321,30 +369,6 @@
                             </div>
                             <div>
                                 <h4 class="user__item-value">{{subContractor.user.phone}}</h4>
-                                <p class="user__item-key" style="text-align: right;">Телефон</p>
-                            </div>
-                        </div>
-
-                        <div class="user__item" style="border-bottom: none;">
-                            <div>
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.8333 14.1667C15.8333 16.0077 13.2216 17.5 9.99996 17.5C6.7783 17.5 4.16663 16.0077 4.16663 14.1667C4.16663 12.3258 6.7783 10.8334 9.99996 10.8334C13.2216 10.8334 15.8333 12.3258 15.8333 14.1667Z"
-                                        fill="#5957D7"
-                                        opacity="0.4"
-                                    />
-                                    <path
-                                        d="M13.3333 5.83333C13.3333 7.67428 11.8409 9.16667 9.99996 9.16667C8.15901 9.16667 6.66663 7.67428 6.66663 5.83333C6.66663 3.99238 8.15901 2.5 9.99996 2.5C11.8409 2.5 13.3333 3.99238 13.3333 5.83333Z"
-                                        fill="#5957D7"
-                                    />
-                                </svg>
-                            </div>
-                            <div style="margin-right: auto">
-                                <h4 class="user__item-value">{{foreman.fullName}}</h4>
-                                <p class="user__item-key">Прораб</p>
-                            </div>
-                            <div>
-                                <h4 class="user__item-value">{{foreman.phone}}</h4>
                                 <p class="user__item-key" style="text-align: right;">Телефон</p>
                             </div>
                         </div>
