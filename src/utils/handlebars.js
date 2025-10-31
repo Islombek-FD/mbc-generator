@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 import Handlebars from 'handlebars';
 
 import { getLogoBase64 } from "./logo.js";
-import { generateQRBase64 } from "./qr.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,10 +57,7 @@ const helpers = {
       for (let i = start; i <= end; i++) arr.push(i);
       return arr;
    },
-   getLogoBase64: () => getLogoBase64(),
-   generateQR: () => async function(text) {
-      return await generateQRBase64(text);
-   }
+   getLogoBase64: () => getLogoBase64()
 };
 
 Object.entries(helpers).forEach(([name, fn]) => {

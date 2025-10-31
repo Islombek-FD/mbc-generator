@@ -1,8 +1,8 @@
 import QRCode from 'qrcode';
 
-export async function generateQRBase64(text) {
+export async function generateQRCode(content) {
    try {
-      return await QRCode.toDataURL(text, {
+      return await QRCode.toDataURL(content, {
          width: 200,
          margin: 1,
          color: {

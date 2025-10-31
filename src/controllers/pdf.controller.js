@@ -3,17 +3,17 @@ import { generatePdfFromHtml } from "../services/pdf.service.js";
 
 export async function generatePdf(req, res) {
   try {
-    const { data, downloadUrl, template, fileName, userId } = req.body;
+    const { data, utils } = req.body;
 
-    if (!data || !template) {
+    if (!data || !utils.template) {
       return res.status(400).json({ error: "Template and data required" });
     }
 
-    const html = await renderTemplate(data, downloadUrl, template, userId);
+    const html = await renderTemplate(data, utils);
 
-    const pdfBuffer = await generatePdfFromHtml(html, template);
+    const pdfBuffer = await generatePdfFromHtml(html, utils.template);
 
-    const pdfFileName = fileName || `${template}-${Date.now()}.pdf`;
+    const pdfFileName = utils.fileName || `${utils.template}-${Date.now()}.pdf`;
 
     res.set({
       'Content-Type': 'application/pdf',
