@@ -17,15 +17,15 @@ const steps = {
    FIXED: 4,
 };
 
-Handlebars.registerHelper('defectProcessData', function (defectStatus) {
+Handlebars.registerHelper('defectProcessData', function (status) {
    const options = [
       'Новый',
       'В процессе',
       'Проверка',
-      defectStatus === 'NOT_FIXED' ? 'Не устранено' : 'Устранено',
+      status === 'NOT_FIXED' ? 'Не устранено' : 'Устранено',
    ];
-   const step = steps[defectStatus] || 1;
-   const isFailed = defectStatus === 'NOT_FIXED';
+   const step = steps[status] || 1;
+   const isFailed = status === 'NOT_FIXED';
 
    return {
       options,

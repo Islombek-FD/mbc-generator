@@ -9,11 +9,14 @@
     border-radius: 50%;
 }
 
-.dm__wrapper--status-NEW {
+.dm__wrapper--status-NEW,
+.dm__wrapper--status-READ {
     background-color: #5c5c6229;
 }
 .dm__wrapper--status-NEW .dm__point,
-.dm__wrapper--status-NEW .dm__rectangle-svg {
+.dm__wrapper--status-READ .dm__point,
+.dm__wrapper--status-NEW .dm__rectangle-svg,
+.dm__wrapper--status-READ .dm__rectangle-svg {
     color: #8f8f94;
 }
 .dm__wrapper--status-IN_PROGRESS {
@@ -30,11 +33,17 @@
 .dm__wrapper--status-IN_REVIEW .dm__rectangle-svg {
     color: #5bc9fb;
 }
-.dm__wrapper--status-NOT_FIXED {
+.dm__wrapper--status-NOT_FIXED,
+.dm__wrapper--status-IN_CORRECT,
+.dm__wrapper--status-DELETED {
     background-color: #ff3b3033;
 }
 .dm__wrapper--status-NOT_FIXED .dm__point,
-.dm__wrapper--status-NOT_FIXED .dm__rectangle-svg {
+.dm__wrapper--status-IN_CORRECT .dm__point,
+.dm__wrapper--status-DELETED .dm__point,
+.dm__wrapper--status-NOT_FIXED .dm__rectangle-svg,
+.dm__wrapper--status-IN_CORRECT .dm__rectangle-svg,
+.dm__wrapper--status-DELETED .dm__rectangle-svg {
     color: #ff3b30;
 }
 .dm__wrapper--status-FIXED {
@@ -45,25 +54,42 @@
     color: #35c85a;
 }
 
-.dm__wrapper--direction-FRONT .dm__rectangle {
+.dm__wrapper--location-FRONT .dm__rectangle {
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
 }
-.dm__wrapper--direction-RIGHT .dm__rectangle {
+.dm__wrapper--location-RIGHT .dm__rectangle {
     top: 50%;
     right: 8px;
     transform: translateY(-50%) rotate(90deg);
 }
-.dm__wrapper--direction-BACK .dm__rectangle {
+.dm__wrapper--location-BACK .dm__rectangle {
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
 }
-.dm__wrapper--direction-LEFT .dm__rectangle {
+.dm__wrapper--location-LEFT .dm__rectangle {
     top: 50%;
     left: 8px;
     transform: translateY(-50%) rotate(-90deg);
+}
+.dm__wrapper--location-CEIL .dm__rectangle {
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dm__wrapper--location-POL .dm__rectangle {
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+}
+
+.dm__wrapper--location-CEIL .dm__point,
+.dm__wrapper--location-POL .dm__point {
+    width: 8px;
+    height: 2px;
+    border: none;
 }
 
 .dm__text {
