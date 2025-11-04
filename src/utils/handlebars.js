@@ -15,6 +15,8 @@ const steps = {
    IN_REVIEW: 3,
    NOT_FIXED: 4,
    FIXED: 4,
+   IN_CORRECT: 0,
+   DELETED: 0,
 };
 
 Handlebars.registerHelper('defectProcessData', function (status) {
@@ -22,9 +24,15 @@ Handlebars.registerHelper('defectProcessData', function (status) {
       'Новый',
       'В процессе',
       'Проверка',
-      status === 'NOT_FIXED' ? 'Не устранено' : 'Устранено',
+      status === 'DELETED'
+         ? 'Архив'
+         : status === 'IN_CORRECT'
+            ? 'Ошибка'
+            : status === 'NOT_FIXED'
+               ? 'Не устранено'
+               : 'Устранено',
    ];
-   const step = steps[status] || 1;
+   const step = steps[status];
    const isFailed = status === 'NOT_FIXED';
 
    return {
@@ -62,6 +70,15 @@ const helpers = {
 
 Object.entries(helpers).forEach(([name, fn]) => {
    Handlebars.registerHelper(name, fn);
+});
+
+Handlebars.registerHelper('fillImages', function (images, totalCount) {
+   const result = [...images];
+   const emptyCount = totalCount - result.length;
+   for (let i = 0; i < emptyCount; i++) {
+      result.push(null);
+   }
+   return result.slice(0, totalCount);
 });
 
 // Load Partials + CSS
